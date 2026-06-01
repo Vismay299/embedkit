@@ -33,7 +33,7 @@ export default function FocusTimerPage() {
         <div className="flex gap-3 justify-center">
           <button
             onClick={() => setIsRunning(!isRunning)}
-            className="px-6 py-3 rounded-lg bg-[#FF6B00] text-white font-semibold hover:bg-[#E55D00] transition-colors"
+            className="px-6 py-3 rounded-lg bg-[#0D9488] text-white font-semibold hover:bg-[#0F766E] transition-colors"
           >
             {isRunning ? "Pause" : "Start"}
           </button>

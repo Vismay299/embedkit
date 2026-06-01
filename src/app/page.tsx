@@ -13,11 +13,11 @@ export default function HomePage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-gradient-to-b from-[#FFF5EB] to-white">
+      <section className="bg-gradient-to-b from-[#F0FDFA] to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 max-w-4xl mx-auto">
             Supercharge Your Notion Pages with{" "}
-            <span className="text-[#FF6B00]">Professional Widgets</span>
+            <span className="text-[#0D9488]">Professional Widgets</span>
           </h1>
           <p className="mt-6 text-lg text-gray-600 max-w-2xl mx-auto">
             All the widgets you need to run your business: time tracking, project progress,
@@ -27,13 +27,13 @@ export default function HomePage() {
           <div className="mt-8 flex gap-4 justify-center">
             <a
               href="#widgets"
-              className="inline-flex items-center px-6 py-3 rounded-lg bg-[#FF6B00] text-white font-semibold hover:bg-[#E55D00] transition-colors"
+              className="inline-flex items-center px-6 py-3 rounded-lg bg-[#0D9488] text-white font-semibold hover:bg-[#0F766E] transition-colors"
             >
               Explore Widgets
             </a>
             <Link
               href="/pricing"
-              className="inline-flex items-center px-6 py-3 rounded-lg border-2 border-[#FF6B00] text-[#FF6B00] font-semibold hover:bg-[#FF6B00]/5 transition-colors"
+              className="inline-flex items-center px-6 py-3 rounded-lg border-2 border-[#0D9488] text-[#0D9488] font-semibold hover:bg-[#0D9488]/5 transition-colors"
             >
               View Examples
             </Link>
@@ -57,7 +57,7 @@ export default function HomePage() {
       </section>
 
       {/* PageVault Banner */}
-      <section className="bg-[#1a1a2e] text-white">
+      <section className="bg-[#1E1B4B] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="flex flex-col md:flex-row items-center gap-6">
             <div className="text-4xl">🔒</div>
@@ -73,7 +73,7 @@ export default function HomePage() {
             </div>
             <Link
               href="/page-vault"
-              className="inline-flex items-center px-6 py-3 rounded-lg bg-[#FF6B00] text-white font-semibold hover:bg-[#E55D00] transition-colors whitespace-nowrap"
+              className="inline-flex items-center px-6 py-3 rounded-lg bg-[#0D9488] text-white font-semibold hover:bg-[#0F766E] transition-colors whitespace-nowrap"
             >
               Learn More
             </Link>
@@ -93,7 +93,7 @@ export default function HomePage() {
               onClick={() => setActiveCategory(cat.id)}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                 activeCategory === cat.id
-                  ? "bg-[#FF6B00] text-white"
+                  ? "bg-[#0D9488] text-white"
                   : "bg-gray-100 text-gray-700 hover:bg-gray-200"
               }`}
             >
@@ -121,7 +121,7 @@ export default function HomePage() {
                       <span className="text-3xl mb-2">💡</span>
                       <h4 className="font-semibold text-gray-700">Your {cat.name}</h4>
                       <p className="text-xs text-gray-500 mt-1">Tell us what you are looking for!</p>
-                      <span className="mt-3 inline-block px-4 py-2 rounded-lg bg-[#FF6B00] text-white text-sm font-medium">
+                      <span className="mt-3 inline-block px-4 py-2 rounded-lg bg-[#0D9488] text-white text-sm font-medium">
                         Submit Now
                       </span>
                     </div>
@@ -138,7 +138,7 @@ export default function HomePage() {
               <span className="text-3xl mb-2">💡</span>
               <h4 className="font-semibold text-gray-700">Your Widget</h4>
               <p className="text-xs text-gray-500 mt-1">Tell us what you are looking for!</p>
-              <span className="mt-3 inline-block px-4 py-2 rounded-lg bg-[#FF6B00] text-white text-sm font-medium">
+              <span className="mt-3 inline-block px-4 py-2 rounded-lg bg-[#0D9488] text-white text-sm font-medium">
                 Submit Now
               </span>
             </div>
@@ -153,13 +153,13 @@ export default function HomePage() {
           <div className="mt-6 flex gap-4 justify-center">
             <Link
               href="#widgets"
-              className="inline-flex items-center px-6 py-3 rounded-lg bg-[#FF6B00] text-white font-semibold hover:bg-[#E55D00] transition-colors"
+              className="inline-flex items-center px-6 py-3 rounded-lg bg-[#0D9488] text-white font-semibold hover:bg-[#0F766E] transition-colors"
             >
               Explore Widgets
             </Link>
             <Link
               href="/auth/login"
-              className="inline-flex items-center px-6 py-3 rounded-lg border-2 border-[#FF6B00] text-[#FF6B00] font-semibold hover:bg-[#FF6B00]/5 transition-colors"
+              className="inline-flex items-center px-6 py-3 rounded-lg border-2 border-[#0D9488] text-[#0D9488] font-semibold hover:bg-[#0D9488]/5 transition-colors"
             >
               Sign up
             </Link>

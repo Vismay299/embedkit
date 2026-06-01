@@ -11,7 +11,7 @@ export default function PrivacyPolicyPage() {
         <h2 className="text-xl font-semibold mt-8">3. Data Security</h2>
         <p>We implement industry-standard security measures to protect your data. All payment information is processed securely through Stripe.</p>
         <h2 className="text-xl font-semibold mt-8">4. Contact</h2>
-        <p>For privacy-related questions, contact us at support@widgetly.co.</p>
+        <p>For privacy-related questions, contact us at support@embedkit.co.</p>
       </div>
     </div>
   );

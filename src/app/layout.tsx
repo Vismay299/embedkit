@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "widgetly - Widgets Made for Notion",
+  title: "embedkit - Embeddable Widgets for Notion",
   description:
     "All the widgets you need to run your business: time tracking, project progress, metrics, payments, and more — in one simple platform.",
 };

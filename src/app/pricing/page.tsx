@@ -14,9 +14,9 @@ export default function PricingPage() {
   return (
     <div>
       {/* Header */}
-      <section className="bg-gradient-to-b from-[#FFF5EB] to-white">
+      <section className="bg-gradient-to-b from-[#F0FDFA] to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-          <h1 className="text-4xl font-bold text-gray-900">Notion Widgets Pricing</h1>
+          <h1 className="text-4xl font-bold text-gray-900">EmbedKit Pricing</h1>
           <p className="mt-4 text-gray-600">Choose a plan that works best for you!</p>
 
           {/* Billing toggle */}
@@ -38,7 +38,7 @@ export default function PricingPage() {
               )}
             >
               Yearly{" "}
-              <span className="text-[#FF6B00] font-semibold">Save up to 20%</span>
+              <span className="text-[#0D9488] font-semibold">Save up to 20%</span>
             </button>
           </div>
         </div>
@@ -57,7 +57,7 @@ export default function PricingPage() {
                 className={cn(
                   "rounded-2xl border-2 p-6 flex flex-col bg-white",
                   plan.tier === "pro"
-                    ? "border-[#FF6B00] shadow-lg shadow-[#FF6B00]/10"
+                    ? "border-[#0D9488] shadow-lg shadow-[#0D9488]/10"
                     : "border-gray-200"
                 )}
               >
@@ -114,7 +114,7 @@ export default function PricingPage() {
                   className={cn(
                     "mt-6 block text-center py-3 rounded-lg font-semibold transition-colors",
                     plan.tier === "pro"
-                      ? "bg-[#FF6B00] text-white hover:bg-[#E55D00]"
+                      ? "bg-[#0D9488] text-white hover:bg-[#0F766E]"
                       : "bg-gray-900 text-white hover:bg-gray-800"
                   )}
                 >

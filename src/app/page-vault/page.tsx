@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function PageVaultPage() {
   return (
     <div>
-      <section className="bg-[#1a1a2e] text-white">
+      <section className="bg-[#1E1B4B] text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
           <span className="text-5xl mb-6 block">🔒</span>
           <h1 className="text-4xl font-bold">
@@ -15,7 +15,7 @@ export default function PageVaultPage() {
           </p>
           <Link
             href="/auth/login"
-            className="mt-8 inline-flex items-center px-8 py-3 rounded-lg bg-[#FF6B00] text-white font-semibold hover:bg-[#E55D00] transition-colors"
+            className="mt-8 inline-flex items-center px-8 py-3 rounded-lg bg-[#0D9488] text-white font-semibold hover:bg-[#0F766E] transition-colors"
           >
             Get Started Now
           </Link>
@@ -58,7 +58,7 @@ export default function PageVaultPage() {
           <div className="mt-6 flex gap-4 justify-center">
             <Link
               href="/auth/login"
-              className="inline-flex items-center px-6 py-3 rounded-lg bg-[#FF6B00] text-white font-semibold hover:bg-[#E55D00] transition-colors"
+              className="inline-flex items-center px-6 py-3 rounded-lg bg-[#0D9488] text-white font-semibold hover:bg-[#0F766E] transition-colors"
             >
               Get Started
             </Link>

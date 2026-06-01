@@ -41,7 +41,7 @@ export function WidgetCard({ widget }: WidgetCardProps) {
     <Link
       href={isComingSoon ? "#" : `/widget/${widget.slug}`}
       className={cn(
-        "group block rounded-xl border border-gray-200 bg-white p-5 transition-all hover:shadow-lg hover:border-[#FF6B00]/30",
+        "group block rounded-xl border border-gray-200 bg-white p-5 transition-all hover:shadow-lg hover:border-[#0D9488]/30",
         isComingSoon && "opacity-70 pointer-events-none"
       )}
     >
@@ -61,14 +61,14 @@ export function WidgetCard({ widget }: WidgetCardProps) {
           </div>
         )}
         {isPartner && (
-          <span className="absolute bottom-2 left-2 bg-[#FF6B00]/10 text-[#FF6B00] text-xs font-medium px-2 py-0.5 rounded">
+          <span className="absolute bottom-2 left-2 bg-[#0D9488]/10 text-[#0D9488] text-xs font-medium px-2 py-0.5 rounded">
             PARTNER WIDGET
           </span>
         )}
       </div>
 
       {/* Info */}
-      <h3 className="font-semibold text-gray-900 group-hover:text-[#FF6B00] transition-colors text-sm">
+      <h3 className="font-semibold text-gray-900 group-hover:text-[#0D9488] transition-colors text-sm">
         {widget.name}
       </h3>
       <p className="text-xs text-gray-500 mt-1 line-clamp-2">{widget.description}</p>

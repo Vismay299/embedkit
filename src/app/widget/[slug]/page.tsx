@@ -21,7 +21,7 @@ export default async function WidgetDetailPage({
   return (
     <div>
       {/* Hero */}
-      <section className="bg-gradient-to-b from-[#FFF5EB] to-white">
+      <section className="bg-gradient-to-b from-[#F0FDFA] to-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="text-center">
             {widget.isNew && (
@@ -35,7 +35,7 @@ export default async function WidgetDetailPage({
               </span>
             )}
             {widget.isPartner && (
-              <span className="inline-block bg-[#FF6B00]/10 text-[#FF6B00] text-xs font-bold px-3 py-0.5 rounded-full mb-4">
+              <span className="inline-block bg-[#0D9488]/10 text-[#0D9488] text-xs font-bold px-3 py-0.5 rounded-full mb-4">
                 PARTNER WIDGET
               </span>
             )}
@@ -45,7 +45,7 @@ export default async function WidgetDetailPage({
             </p>
             <Link
               href="/auth/login"
-              className="mt-6 inline-flex items-center px-6 py-3 rounded-lg bg-[#FF6B00] text-white font-semibold hover:bg-[#E55D00] transition-colors"
+              className="mt-6 inline-flex items-center px-6 py-3 rounded-lg bg-[#0D9488] text-white font-semibold hover:bg-[#0F766E] transition-colors"
             >
               Get Started
             </Link>
@@ -106,7 +106,7 @@ export default async function WidgetDetailPage({
             { q: `How can I create a ${widget.name.toLowerCase()} for my notion page?`, a: "Simply sign up for an account, select this widget, customize it to your liking, and copy the embed URL into Notion." },
             { q: "Will my data be secure in the widget?", a: "Yes! All widget data is encrypted and stored securely. We never share your data with third parties." },
             { q: "Can I use this widget on mobile devices?", a: "Widgets work on all Notion-supported platforms including iOS, Android, and desktop." },
-            { q: "How do I provide feedback on the widget?", a: "We love feedback! Email us at support@widgetly.co or use the feedback form in your dashboard." },
+            { q: "How do I provide feedback on the widget?", a: "We love feedback! Email us at support@embedkit.co or use the feedback form in your dashboard." },
           ].map((faq, i) => (
             <details
               key={i}
@@ -129,13 +129,13 @@ export default async function WidgetDetailPage({
           <div className="mt-4 flex gap-4 justify-center">
             <Link
               href="/"
-              className="inline-flex items-center px-6 py-3 rounded-lg bg-[#FF6B00] text-white font-semibold hover:bg-[#E55D00] transition-colors"
+              className="inline-flex items-center px-6 py-3 rounded-lg bg-[#0D9488] text-white font-semibold hover:bg-[#0F766E] transition-colors"
             >
               Explore Widgets
             </Link>
             <Link
               href="/auth/login"
-              className="inline-flex items-center px-6 py-3 rounded-lg border-2 border-[#FF6B00] text-[#FF6B00] font-semibold hover:bg-[#FF6B00]/5 transition-colors"
+              className="inline-flex items-center px-6 py-3 rounded-lg border-2 border-[#0D9488] text-[#0D9488] font-semibold hover:bg-[#0D9488]/5 transition-colors"
             >
               Sign up
             </Link>

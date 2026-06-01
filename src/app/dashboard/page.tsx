@@ -10,7 +10,7 @@ export default function DashboardPage() {
         </div>
         <Link
           href="/"
-          className="inline-flex items-center px-4 py-2 rounded-lg bg-[#FF6B00] text-white text-sm font-semibold hover:bg-[#E55D00] transition-colors"
+          className="inline-flex items-center px-4 py-2 rounded-lg bg-[#0D9488] text-white text-sm font-semibold hover:bg-[#0F766E] transition-colors"
         >
           + New Widget
         </Link>
@@ -46,7 +46,7 @@ export default function DashboardPage() {
           <p className="text-gray-500 text-sm mb-4">You haven&apos;t created any widgets yet.</p>
           <Link
             href="/"
-            className="inline-flex items-center px-4 py-2 rounded-lg bg-[#FF6B00] text-white text-sm font-semibold hover:bg-[#E55D00] transition-colors"
+            className="inline-flex items-center px-4 py-2 rounded-lg bg-[#0D9488] text-white text-sm font-semibold hover:bg-[#0F766E] transition-colors"
           >
             Browse Widgets
           </Link>
@@ -66,7 +66,7 @@ export default function DashboardPage() {
             </div>
             <Link
               href="/pricing"
-              className="inline-flex items-center px-4 py-2 rounded-lg border border-[#FF6B00] text-[#FF6B00] text-sm font-semibold hover:bg-[#FF6B00]/5 transition-colors"
+              className="inline-flex items-center px-4 py-2 rounded-lg border border-[#0D9488] text-[#0D9488] text-sm font-semibold hover:bg-[#0D9488]/5 transition-colors"
             >
               Upgrade Plan
             </Link>

@@ -26,7 +26,7 @@ export default function SignupPage() {
                 id="name"
                 type="text"
                 placeholder="John Doe"
-                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#FF6B00] focus:border-transparent outline-none transition-all"
+                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0D9488] focus:border-transparent outline-none transition-all"
               />
             </div>
             <div>
@@ -37,7 +37,7 @@ export default function SignupPage() {
                 id="email"
                 type="email"
                 placeholder="you@example.com"
-                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#FF6B00] focus:border-transparent outline-none transition-all"
+                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 focus:ring-2 focus:ring-[#0D9488] focus:border-transparent outline-none transition-all"
               />
             </div>
             <button className="w-full py-2.5 rounded-lg bg-gray-900 text-white font-medium hover:bg-gray-800 transition-colors">
@@ -66,7 +66,7 @@ export default function SignupPage() {
 
           <p className="text-center text-sm text-gray-500 mt-6">
             Already have an account?{" "}
-            <Link href="/auth/login" className="text-[#FF6B00] hover:underline font-medium">
+            <Link href="/auth/login" className="text-[#0D9488] hover:underline font-medium">
               Sign In
             </Link>
           </p>

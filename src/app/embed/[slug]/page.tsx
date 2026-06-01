@@ -59,7 +59,7 @@ export default async function WidgetEmbedPage({
           style={{
             width: `${config.progress || 65}%`,
             height: "100%",
-            background: config.color || "#FF6B00",
+            background: config.color || "#0D9488",
             borderRadius: "4px",
             transition: "width 0.5s ease",
           }}

@@ -15,7 +15,7 @@ export const widgets: WidgetDefinition[] = [
     configSchema: [
       { key: "projectName", label: "Project Name", type: "text", default: "My Project" },
       { key: "progress", label: "Progress (%)", type: "number", default: 65 },
-      { key: "color", label: "Bar Color", type: "color", default: "#FF6B00" },
+      { key: "color", label: "Bar Color", type: "color", default: "#0D9488" },
     ],
   },
   {
@@ -31,7 +31,7 @@ export const widgets: WidgetDefinition[] = [
     configSchema: [
       { key: "label", label: "Label", type: "text", default: "Progress" },
       { key: "value", label: "Value (%)", type: "number", default: 75 },
-      { key: "color", label: "Color", type: "color", default: "#FF6B00" },
+      { key: "color", label: "Color", type: "color", default: "#0D9488" },
     ],
   },
   {
@@ -170,7 +170,7 @@ export const widgets: WidgetDefinition[] = [
     configSchema: [
       { key: "label", label: "Button Text", type: "text", default: "Click Me" },
       { key: "url", label: "URL", type: "text", default: "https://" },
-      { key: "color", label: "Color", type: "color", default: "#FF6B00" },
+      { key: "color", label: "Color", type: "color", default: "#0D9488" },
     ],
   },
   {

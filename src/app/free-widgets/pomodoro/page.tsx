@@ -62,7 +62,7 @@ export default function PomodoroTimerPage() {
             isBreak ? (
               <button
                 onClick={startFocus}
-                className="px-6 py-3 rounded-lg bg-[#FF6B00] text-white font-semibold hover:bg-[#E55D00] transition-colors"
+                className="px-6 py-3 rounded-lg bg-[#0D9488] text-white font-semibold hover:bg-[#0F766E] transition-colors"
               >
                 Start Focus
               </button>
@@ -77,7 +77,7 @@ export default function PomodoroTimerPage() {
           ) : (
             <button
               onClick={() => setIsRunning(!isRunning)}
-              className="px-6 py-3 rounded-lg bg-[#FF6B00] text-white font-semibold hover:bg-[#E55D00] transition-colors"
+              className="px-6 py-3 rounded-lg bg-[#0D9488] text-white font-semibold hover:bg-[#0F766E] transition-colors"
             >
               {isRunning ? "Pause" : "Resume"}
             </button>

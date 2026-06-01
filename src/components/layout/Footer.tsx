@@ -14,25 +14,25 @@ const companyLinks = [
   { name: "Partner - beeSnap", href: "#" },
   { name: "Partner - amacos", href: "#" },
   { name: "Blog", href: "/blog" },
-  { name: "Submit Bugs or Feature Request", href: "mailto:feedback@widgetly.co" },
+  { name: "Submit Bugs or Feature Request", href: "mailto:feedback@embedkit.co" },
   { name: "Advertise with us", href: "#" },
 ];
 
 export function Footer() {
   return (
-    <footer className="bg-[#1a1a2e] text-white mt-auto">
+    <footer className="bg-[#1E1B4B] text-white mt-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand */}
           <div>
             <Link href="/" className="flex items-center gap-2 font-bold text-lg mb-4">
               <span className="text-xl">◆</span>
-              <span>widgetly</span>
+              <span>embedkit</span>
             </Link>
             <p className="text-gray-400 text-sm mb-4">
-              Widgets made with ❤ by widgetly. If you have any questions, please email us at{" "}
-              <a href="mailto:support@widgetly.co" className="text-[#FF6B00] hover:underline">
-                support@widgetly.co
+              Widgets made with ❤ by embedkit. If you have any questions, please email us at{" "}
+              <a href="mailto:support@embedkit.co" className="text-[#0D9488] hover:underline">
+                support@embedkit.co
               </a>
               .
             </p>
@@ -84,7 +84,7 @@ export function Footer() {
               Terms and Conditions
             </Link>
           </div>
-          <p>widgetly © 2026</p>
+          <p>embedkit © 2026</p>
         </div>
       </div>
     </footer>
