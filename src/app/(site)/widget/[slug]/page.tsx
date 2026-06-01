@@ -44,12 +44,27 @@ export default async function WidgetDetailPage({
               {widget.description}
             </p>
             <Link
-              href="/auth/login"
+              href={`/embed/${widget.slug}`}
+              target="_blank"
               className="mt-6 inline-flex items-center px-6 py-3 rounded-lg bg-[#0D9488] text-white font-semibold hover:bg-[#0F766E] transition-colors"
             >
-              Get Started
+              Preview Widget →
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* Embed Instructions */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
+        <div className="bg-gray-50 rounded-2xl border border-gray-200 p-6">
+          <h2 className="font-semibold text-gray-900 mb-3">📋 How to embed in Notion</h2>
+          <div className="bg-gray-900 text-green-400 rounded-lg p-4 font-mono text-sm break-all">
+            https://embedkit-wheat.vercel.app/embed/{widget.slug}{widget.configSchema.length > 0 ? "?" + widget.configSchema.map(f => f.key + "=...").join("&") : ""}
+          </div>
+          <p className="text-sm text-gray-500 mt-3">
+            In Notion, type <code className="bg-gray-200 px-1.5 py-0.5 rounded text-xs">/embed</code> and paste this URL.
+            Customize by changing the values after the equals signs.
+          </p>
         </div>
       </section>
 
@@ -103,7 +118,7 @@ export default async function WidgetDetailPage({
         <h2 className="text-2xl font-bold text-gray-900 mb-8">Frequently asked questions</h2>
         <div className="space-y-3">
           {[
-            { q: `How can I create a ${widget.name.toLowerCase()} for my notion page?`, a: "Simply sign up for an account, select this widget, customize it to your liking, and copy the embed URL into Notion." },
+            { q: `How can I create a ${widget.name.toLowerCase()} for my notion page?`, a: "Copy the embed URL above, go to your Notion page, type /embed and paste it. Customize using the URL parameters." },
             { q: "Will my data be secure in the widget?", a: "Yes! All widget data is encrypted and stored securely. We never share your data with third parties." },
             { q: "Can I use this widget on mobile devices?", a: "Widgets work on all Notion-supported platforms including iOS, Android, and desktop." },
             { q: "How do I provide feedback on the widget?", a: "We love feedback! Email us at support@embedkit.co or use the feedback form in your dashboard." },
@@ -134,10 +149,11 @@ export default async function WidgetDetailPage({
               Explore Widgets
             </Link>
             <Link
-              href="/auth/login"
+              href={`/embed/${widget.slug}`}
+              target="_blank"
               className="inline-flex items-center px-6 py-3 rounded-lg border-2 border-[#0D9488] text-[#0D9488] font-semibold hover:bg-[#0D9488]/5 transition-colors"
             >
-              Sign up
+              Open Widget
             </Link>
           </div>
         </div>
