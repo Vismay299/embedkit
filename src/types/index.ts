@@ -21,7 +21,7 @@ export interface WidgetDefinition {
 export interface WidgetConfigField {
   key: string;
   label: string;
-  type: 'text' | 'color' | 'number' | 'select' | 'toggle';
+  type: 'text' | 'color' | 'number' | 'select' | 'toggle' | 'date';
   default: string | number | boolean;
   options?: { label: string; value: string }[];
 }

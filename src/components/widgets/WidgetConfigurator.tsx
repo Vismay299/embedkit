@@ -113,6 +113,17 @@ function FieldRenderer({
     );
   }
 
+  if (field.type === "date") {
+    return (
+      <input
+        type="date"
+        value={String(value)}
+        onChange={(e) => onChange(field.key, e.target.value)}
+        className={inputClasses}
+      />
+    );
+  }
+
   // text (default)
   return (
     <input

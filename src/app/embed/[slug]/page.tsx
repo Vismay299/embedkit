@@ -71,8 +71,9 @@ export default async function WidgetEmbedPage({
     case "progress-bar":
       return (
         <ProgressBarWidget
-          label={config.label}
-          value={Number(config.value)}
+          title={config.title}
+          startDate={config.startDate}
+          endDate={config.endDate}
           color={config.color}
         />
       );
@@ -100,7 +101,18 @@ export default async function WidgetEmbedPage({
       return <WordClockWidget />;
 
     case "year-month-week-day-progress":
-      return <LifeProgressWidget />;
+      return (
+        <LifeProgressWidget
+          title={config.title}
+          birthDate={config.birthDate}
+          timezone={config.timezone}
+          showLife={config.showLife !== "false"}
+          showYear={config.showYear !== "false"}
+          showMonth={config.showMonth !== "false"}
+          showWeek={config.showWeek !== "false"}
+          showDay={config.showDay !== "false"}
+        />
+      );
 
     case "simple-count-down":
       return <CountdownTimerWidget targetDate={config.targetDate} />;
