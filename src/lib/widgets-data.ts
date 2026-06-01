@@ -92,6 +92,7 @@ export const widgets: WidgetDefinition[] = [
     requiredPlan: "free",
     configSchema: [
       { key: "label", label: "Label", type: "text", default: "Views" },
+      { key: "maxViews", label: "Max Views (0=unlimited)", type: "number", default: 0 },
     ],
   },
   {

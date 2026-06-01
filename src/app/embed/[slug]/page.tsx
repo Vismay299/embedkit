@@ -95,7 +95,12 @@ export default async function WidgetEmbedPage({
       );
 
     case "page-view":
-      return <PageViewWidget label={config.label} />;
+      return (
+        <PageViewWidget
+          label={config.label}
+          maxViews={Number(config.maxViews) || 0}
+        />
+      );
 
     case "word-clock":
       return <WordClockWidget />;
