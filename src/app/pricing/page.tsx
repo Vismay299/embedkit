@@ -9,7 +9,7 @@ import type { PricingTier } from "@/types";
 export default function PricingPage() {
   const [isYearly, setIsYearly] = useState(false);
 
-  const tiers: PricingTier[] = ["free", "basic", "pro", "ultimate"];
+  const tiers: PricingTier[] = ["free", "basic", "pro"];
 
   return (
     <div>
@@ -46,10 +46,13 @@ export default function PricingPage() {
 
       {/* Pricing Cards */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {pricingPlans.map((plan) => {
-            const price = isYearly ? plan.yearlyPrice / 12 : plan.monthlyPrice;
+            const monthlyPrice = plan.monthlyPrice;
+            const yearlyMonthly = Math.round(plan.yearlyPrice / 12);
+            const price = isYearly ? yearlyMonthly : monthlyPrice;
             const annualTotal = isYearly ? plan.yearlyPrice : plan.monthlyPrice * 12;
+            const savings = Math.round((monthlyPrice * 12 - plan.yearlyPrice) / 12 * 100) / 100;
 
             return (
               <div
@@ -63,13 +66,25 @@ export default function PricingPage() {
               >
                 <h2 className="text-xl font-bold text-gray-900">{plan.name}</h2>
                 <div className="mt-3">
-                  <span className="text-3xl font-bold">{formatPrice(price)}</span>
+                  {isYearly && plan.tier !== "free" ? (
+                    <>
+                      <span className="text-gray-400 line-through text-lg">{formatPrice(monthlyPrice)}</span>
+                      <span className="text-3xl font-bold ml-2">{formatPrice(price)}</span>
+                    </>
+                  ) : (
+                    <span className="text-3xl font-bold">{formatPrice(price)}</span>
+                  )}
                   <span className="text-gray-500">/ month</span>
                 </div>
                 {isYearly && plan.tier !== "free" && (
-                  <p className="text-xs text-gray-400 mt-1">
-                    Billed ${annualTotal} annually
-                  </p>
+                  <>
+                    <p className="text-xs text-gray-400 mt-1">
+                      Billed ${annualTotal} annually
+                    </p>
+                    <p className="text-xs text-green-600 font-medium mt-0.5">
+                      Save ${savings}/mo (20% off)
+                    </p>
+                  </>
                 )}
                 {plan.tier === "free" && (
                   <p className="text-xs text-gray-400 mt-1">$0 / month</p>

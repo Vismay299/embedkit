@@ -1,7 +1,7 @@
 // Widget types
 export type WidgetCategory = 'counters' | 'buttons' | 'weather' | 'productivity' | 'business';
 
-export type WidgetPlan = 'free' | 'basic' | 'pro' | 'ultimate';
+export type WidgetPlan = 'free' | 'basic' | 'pro';
 
 export interface WidgetDefinition {
   id: string;
@@ -40,7 +40,7 @@ export interface UserWidget {
 }
 
 // Pricing types
-export type PricingTier = 'free' | 'basic' | 'pro' | 'ultimate';
+export type PricingTier = 'free' | 'basic' | 'pro';
 
 export interface PricingPlan {
   tier: PricingTier;
