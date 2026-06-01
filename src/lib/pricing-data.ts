@@ -20,7 +20,7 @@ export const pricingPlans: PricingPlan[] = [
     tier: "basic",
     name: "BASIC",
     monthlyPrice: 3,
-    yearlyPrice: 29,
+    yearlyPrice: 24,
     widgets: 15,
     apps: 5,
     viewsPerMonth: 5000,
