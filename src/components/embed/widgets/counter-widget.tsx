@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 
 interface CounterWidgetProps {
   label?: string;
@@ -8,7 +8,10 @@ interface CounterWidgetProps {
 }
 
 export default function CounterWidget({ label = "Count", initialValue = 0 }: CounterWidgetProps) {
-  const [count, setCount] = useState(initialValue);
+  const [count, setCount] = useLocalStorage<number>(
+    `embedkit-counter-${label}`,
+    initialValue
+  );
 
   return (
     <div style={{
@@ -44,7 +47,7 @@ export default function CounterWidget({ label = "Count", initialValue = 0 }: Cou
       </div>
       <div style={{ display: "flex", gap: "10px", justifyContent: "center" }}>
         <button
-          onClick={() => setCount(c => c - 1)}
+          onClick={() => setCount((c: number) => c - 1)}
           style={{
             width: "44px",
             height: "44px",
@@ -72,7 +75,7 @@ export default function CounterWidget({ label = "Count", initialValue = 0 }: Cou
           −
         </button>
         <button
-          onClick={() => setCount(c => c + 1)}
+          onClick={() => setCount((c: number) => c + 1)}
           style={{
             width: "44px",
             height: "44px",

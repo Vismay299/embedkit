@@ -81,7 +81,7 @@ export default async function WidgetEmbedPage({
       return (
         <HabitCounterWidget
           habitName={config.habitName}
-          streak={Number(config.streak)}
+          goal={Number(config.goal)}
         />
       );
 

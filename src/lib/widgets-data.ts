@@ -45,7 +45,7 @@ export const widgets: WidgetDefinition[] = [
     requiredPlan: "free",
     configSchema: [
       { key: "habitName", label: "Habit Name", type: "text", default: "Read Daily" },
-      { key: "streak", label: "Current Streak", type: "number", default: 12 },
+      { key: "goal", label: "Goal (days)", type: "number", default: 30 },
     ],
   },
   {

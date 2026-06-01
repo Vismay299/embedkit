@@ -24,7 +24,7 @@ const mockWidgets: (UserWidget & { visibility: boolean })[] = [
     userId: "user-1",
     widgetId: "habit-counter",
     name: "Daily Reading Habit",
-    config: { habitName: "Read Daily", streak: 15 },
+    config: { habitName: "Read Daily", goal: 30 },
     embedToken: "tok_def456",
     viewsCount: 128,
     createdAt: "2026-05-20T08:15:00Z",

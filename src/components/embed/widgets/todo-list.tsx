@@ -1,11 +1,17 @@
 "use client";
 
 import { useState } from "react";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 
 interface Todo {
   id: number;
   text: string;
   done: boolean;
+}
+
+interface TodoState {
+  todos: Todo[];
+  nextId: number;
 }
 
 const DEFAULT_TODOS: Todo[] = [
@@ -15,84 +21,116 @@ const DEFAULT_TODOS: Todo[] = [
 ];
 
 export default function TodoListWidget() {
-  const [todos, setTodos] = useState<Todo[]>(DEFAULT_TODOS);
+  const [state, setState] = useLocalStorage<TodoState>("embedkit-todos", {
+    todos: DEFAULT_TODOS,
+    nextId: 4,
+  });
   const [newText, setNewText] = useState("");
-  const [nextId, setNextId] = useState(4);
 
   const addTodo = () => {
     const trimmed = newText.trim();
     if (!trimmed) return;
-    setTodos(prev => [...prev, { id: nextId, text: trimmed, done: false }]);
-    setNextId(id => id + 1);
+    setState((prev) => ({
+      todos: [...prev.todos, { id: prev.nextId, text: trimmed, done: false }],
+      nextId: prev.nextId + 1,
+    }));
     setNewText("");
   };
 
   const toggleTodo = (id: number) => {
-    setTodos(prev => prev.map(t => t.id === id ? { ...t, done: !t.done } : t));
+    setState((prev) => ({
+      ...prev,
+      todos: prev.todos.map((t) =>
+        t.id === id ? { ...t, done: !t.done } : t
+      ),
+    }));
   };
 
   const deleteTodo = (id: number) => {
-    setTodos(prev => prev.filter(t => t.id !== id));
+    setState((prev) => ({
+      ...prev,
+      todos: prev.todos.filter((t) => t.id !== id),
+    }));
+  };
+
+  const clearCompleted = () => {
+    setState((prev) => ({
+      ...prev,
+      todos: prev.todos.filter((t) => !t.done),
+    }));
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter") addTodo();
   };
 
-  const doneCount = todos.filter(t => t.done).length;
+  const doneCount = state.todos.filter((t) => t.done).length;
+  const totalCount = state.todos.length;
+  const hasCompleted = doneCount > 0;
 
   return (
-    <div style={{
-      fontFamily: "system-ui, -apple-system, sans-serif",
-      padding: "20px",
-      background: "#ffffff",
-      borderRadius: "12px",
-      border: "1px solid #e5e7eb",
-      boxShadow: "0 1px 3px rgba(0,0,0,0.06)",
-      minWidth: "260px",
-      maxWidth: "420px",
-    }}>
-      <div style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        marginBottom: "14px",
-      }}>
+    <div
+      style={{
+        fontFamily: "system-ui, -apple-system, sans-serif",
+        padding: "20px",
+        background: "#ffffff",
+        borderRadius: "12px",
+        border: "1px solid #e5e7eb",
+        boxShadow: "0 1px 3px rgba(0,0,0,0.06)",
+        minWidth: "260px",
+        maxWidth: "420px",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          marginBottom: "14px",
+        }}
+      >
         <span style={{ fontWeight: 700, fontSize: "16px", color: "#111827" }}>
           📝 To-Do
         </span>
-        <span style={{
-          fontSize: "13px",
-          color: "#6b7280",
-          fontWeight: 500,
-        }}>
-          {doneCount}/{todos.length} done
+        <span
+          style={{
+            fontSize: "13px",
+            color: "#6b7280",
+            fontWeight: 500,
+          }}
+        >
+          {doneCount}/{totalCount} done
         </span>
       </div>
 
       {/* Progress */}
-      {todos.length > 0 && (
-        <div style={{
-          width: "100%",
-          height: "4px",
-          background: "#f3f4f6",
-          borderRadius: "2px",
-          overflow: "hidden",
-          marginBottom: "14px",
-        }}>
-          <div style={{
-            width: `${(doneCount / todos.length) * 100}%`,
-            height: "100%",
-            background: doneCount === todos.length ? "#22c55e" : "#0D9488",
+      {totalCount > 0 && (
+        <div
+          style={{
+            width: "100%",
+            height: "4px",
+            background: "#f3f4f6",
             borderRadius: "2px",
-            transition: "width 0.3s ease",
-          }} />
+            overflow: "hidden",
+            marginBottom: "14px",
+          }}
+        >
+          <div
+            style={{
+              width: `${(doneCount / totalCount) * 100}%`,
+              height: "100%",
+              background:
+                doneCount === totalCount ? "#22c55e" : "#0D9488",
+              borderRadius: "2px",
+              transition: "width 0.3s ease",
+            }}
+          />
         </div>
       )}
 
       {/* List */}
       <div style={{ marginBottom: "12px", maxHeight: "240px", overflowY: "auto" }}>
-        {todos.map((todo) => (
+        {state.todos.map((todo) => (
           <div
             key={todo.id}
             style={{
@@ -112,7 +150,9 @@ export default function TodoListWidget() {
                 width: "20px",
                 height: "20px",
                 borderRadius: "6px",
-                border: todo.done ? "2px solid #22c55e" : "2px solid #d1d5db",
+                border: todo.done
+                  ? "2px solid #22c55e"
+                  : "2px solid #d1d5db",
                 background: todo.done ? "#22c55e" : "transparent",
                 cursor: "pointer",
                 display: "flex",
@@ -128,13 +168,15 @@ export default function TodoListWidget() {
             >
               {todo.done ? "✓" : ""}
             </button>
-            <span style={{
-              flex: 1,
-              fontSize: "14px",
-              color: todo.done ? "#9ca3af" : "#374151",
-              textDecoration: todo.done ? "line-through" : "none",
-              transition: "all 0.15s ease",
-            }}>
+            <span
+              style={{
+                flex: 1,
+                fontSize: "14px",
+                color: todo.done ? "#9ca3af" : "#374151",
+                textDecoration: todo.done ? "line-through" : "none",
+                transition: "all 0.15s ease",
+              }}
+            >
               {todo.text}
             </span>
             <button
@@ -163,12 +205,51 @@ export default function TodoListWidget() {
             </button>
           </div>
         ))}
-        {todos.length === 0 && (
-          <div style={{ textAlign: "center", padding: "20px", color: "#9ca3af", fontSize: "14px" }}>
+        {totalCount === 0 && (
+          <div
+            style={{
+              textAlign: "center",
+              padding: "20px",
+              color: "#9ca3af",
+              fontSize: "14px",
+            }}
+          >
             All done! 🎉
           </div>
         )}
       </div>
+
+      {/* Clear completed */}
+      {hasCompleted && (
+        <div style={{ marginBottom: "10px", textAlign: "right" }}>
+          <button
+            onClick={clearCompleted}
+            style={{
+              background: "none",
+              border: "1px solid #e5e7eb",
+              borderRadius: "6px",
+              padding: "5px 12px",
+              fontSize: "12px",
+              color: "#6b7280",
+              cursor: "pointer",
+              fontFamily: "inherit",
+              transition: "all 0.15s ease",
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.color = "#ef4444";
+              e.currentTarget.style.borderColor = "#fca5a5";
+              e.currentTarget.style.background = "#fef2f2";
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.color = "#6b7280";
+              e.currentTarget.style.borderColor = "#e5e7eb";
+              e.currentTarget.style.background = "transparent";
+            }}
+          >
+            Clear completed ({doneCount})
+          </button>
+        </div>
+      )}
 
       {/* Add input */}
       <div style={{ display: "flex", gap: "8px" }}>
