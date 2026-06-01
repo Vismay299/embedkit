@@ -1,4 +1,4 @@
-# Widgetly Clone
+# WidgetBoard
 
 A full-stack clone of [Widgetly.co](https://widgetly.co) — a widget marketplace SaaS for Notion pages.
 
