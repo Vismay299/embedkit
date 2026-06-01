@@ -1,0 +1,58 @@
+import { BlogPost } from "@/types";
+
+export const blogPosts: BlogPost[] = [
+  {
+    id: "1",
+    title: "How to Sell Digital Products Online From Idea to Income",
+    slug: "how-to-sell-digital-products-online",
+    excerpt: "Discover how to sell digital products online with this practical guide. Learn to find your niche, create profitable products, and market them effectively.",
+    content: "Full article content here...",
+    category: "How-to",
+    publishedAt: "2025-11-18",
+  },
+  {
+    id: "2",
+    title: "7 Best Notion Dashboard Templates to Use in 2025",
+    slug: "best-notion-dashboard-templates-2025",
+    excerpt: "Discover the top 7 marketplaces for free and premium Notion dashboard templates. Streamline your workflow and boost productivity with our curated list.",
+    content: "Full article content here...",
+    category: "Round-up",
+    publishedAt: "2025-11-16",
+  },
+  {
+    id: "3",
+    title: "12 Best Notion Widgets Free To Use in 2025",
+    slug: "best-notion-widgets-free-2025",
+    excerpt: "Discover the top 12 Notion widgets free to use in 2025. Boost your productivity with clocks, calendars, and trackers that are easy to embed and customize.",
+    content: "Full article content here...",
+    category: "Resources",
+    publishedAt: "2025-11-14",
+  },
+  {
+    id: "4",
+    title: "A Guide to Dynamic Pricing Ecommerce",
+    slug: "guide-dynamic-pricing-ecommerce",
+    excerpt: "Learn how dynamic pricing ecommerce can boost your revenue. Our guide covers key strategies, tools, and real-world examples to help you get started.",
+    content: "Full article content here...",
+    category: "Explainer",
+    publishedAt: "2025-11-13",
+  },
+  {
+    id: "5",
+    title: "Weather Widget for Your Website: Add It in Minutes",
+    slug: "weather-widget-for-website",
+    excerpt: "Discover how the weather widget for your website can boost engagement with quick setup, customizable forecasts, and easy embeds.",
+    content: "Full article content here...",
+    category: "How-to",
+    publishedAt: "2025-11-12",
+  },
+  {
+    id: "6",
+    title: "How to Embed Instagram Feed on Website: Simple Steps",
+    slug: "embed-instagram-feed-website",
+    excerpt: "Learn how to embed instagram feed on website to boost engagement and social proof. A practical guide.",
+    content: "Full article content here...",
+    category: "How-to",
+    publishedAt: "2025-11-11",
+  },
+];
