@@ -11,41 +11,38 @@ const freeWidgets = [
 ];
 
 const companyLinks = [
-  { name: "Partner - beeSnap", href: "#" },
-  { name: "Partner - amacos", href: "#" },
   { name: "Blog", href: "/blog" },
-  { name: "Submit Bugs or Feature Request", href: "mailto:feedback@embedkit.co" },
-  { name: "Advertise with us", href: "#" },
+  { name: "Submit Feedback", href: "mailto:feedback@embedkit.co" },
 ];
 
 export function Footer() {
   return (
-    <footer className="bg-[#1E1B4B] text-white mt-auto">
+    <footer className="bg-gray-900 text-white mt-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand */}
           <div>
-            <Link href="/" className="flex items-center gap-2 font-bold text-lg mb-4">
-              <span className="text-xl">◆</span>
-              <span>embedkit</span>
+            <Link href="/" className="flex items-center gap-2.5 mb-4">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center text-white font-bold text-sm">
+                E
+              </div>
+              <span className="font-bold text-lg">embedkit</span>
             </Link>
-            <p className="text-gray-400 text-sm mb-4">
-              Widgets made with ❤ by embedkit. If you have any questions, please email us at{" "}
-              <a href="mailto:support@embedkit.co" className="text-[#0D9488] hover:underline">
+            <p className="text-gray-400 text-sm mb-4 leading-relaxed">
+              Embed live widgets into Notion in 30 seconds. No code required.
+            </p>
+            <p className="text-gray-500 text-xs">
+              Questions?{" "}
+              <a href="mailto:support@embedkit.co" className="text-blue-400 hover:text-blue-300 transition-colors">
                 support@embedkit.co
               </a>
-              .
             </p>
-            <div className="flex gap-4 text-sm text-gray-400">
-              <Link href="#" className="hover:text-white">Twitter</Link>
-              <Link href="#" className="hover:text-white">YouTube</Link>
-            </div>
           </div>
 
           {/* Free Widgets */}
           <div>
             <h3 className="font-semibold text-sm uppercase tracking-wider mb-4 text-gray-300">
-              FREE WIDGETS
+              Free Tools
             </h3>
             <ul className="space-y-2">
               {freeWidgets.map((item) => (
@@ -61,7 +58,7 @@ export function Footer() {
           {/* Company */}
           <div>
             <h3 className="font-semibold text-sm uppercase tracking-wider mb-4 text-gray-300">
-              COMPANY
+              Company
             </h3>
             <ul className="space-y-2">
               {companyLinks.map((item) => (
@@ -81,10 +78,10 @@ export function Footer() {
               Privacy Policy
             </Link>
             <Link href="/terms-conditions" className="hover:text-white transition-colors">
-              Terms and Conditions
+              Terms
             </Link>
           </div>
-          <p>embedkit © 2026</p>
+          <p>© 2026 embedkit</p>
         </div>
       </div>
     </footer>

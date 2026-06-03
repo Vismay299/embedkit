@@ -14,6 +14,15 @@ import LikeButtonWidget from "@/components/embed/widgets/like-button";
 import TodoListWidget from "@/components/embed/widgets/todo-list";
 import InspirationalQuotesWidget from "@/components/embed/widgets/inspirational-quotes";
 import ProjectProgressBizWidget from "@/components/embed/widgets/project-progress-biz";
+import KPIWidgetWidget from "@/components/embed/widgets/kpi-widget";
+import PayPalButtonWidget from "@/components/embed/widgets/paypal-button";
+import WeatherRoundWidget from "@/components/embed/widgets/weather-round";
+import WeatherSquareWidget from "@/components/embed/widgets/weather-square";
+import WeatherForecastWidget from "@/components/embed/widgets/weather-forecast";
+import TimeTrackerWidget from "@/components/embed/widgets/time-tracker";
+import CalendarWidget from "@/components/embed/widgets/calendar-widget";
+import WidgetLoading from "@/components/embed/WidgetLoading";
+import { Suspense } from "react";
 
 // Helper: find widget by id or slug
 function findWidget(slug: string, widgetId?: string) {
@@ -56,113 +65,161 @@ export default async function WidgetEmbedPage({
 
   const config = parseConfig(sp, widget);
 
-  // Route to the correct widget component based on widget id
-  switch (widget.id) {
-    // COUNTERS
-    case "project-progress":
-      return (
-        <ProjectProgressWidget
-          projectName={config.projectName}
-          progress={Number(config.progress)}
-          color={config.color}
-        />
-      );
+  // Render the actual widget component
+  const renderWidget = () => {
+    // Route to the correct widget component based on widget id
+    switch (widget.id) {
+      // COUNTERS
+      case "project-progress":
+        return (
+          <ProjectProgressWidget
+            projectName={config.projectName}
+            progress={Number(config.progress)}
+            color={config.color}
+          />
+        );
 
-    case "progress-bar":
-      return (
-        <ProgressBarWidget
-          title={config.title}
-          startDate={config.startDate}
-          endDate={config.endDate}
-          color={config.color}
-        />
-      );
+      case "progress-bar":
+        return (
+          <ProgressBarWidget
+            title={config.title}
+            startDate={config.startDate}
+            endDate={config.endDate}
+            color={config.color}
+          />
+        );
 
-    case "habit-counter":
-      return (
-        <HabitCounterWidget
-          habitName={config.habitName}
-          goal={Number(config.goal)}
-        />
-      );
+      case "habit-counter":
+        return (
+          <HabitCounterWidget
+            habitName={config.habitName}
+            goal={Number(config.goal)}
+          />
+        );
 
-    case "counter":
-      return (
-        <CounterWidget
-          label={config.label}
-          initialValue={Number(config.initialValue)}
-        />
-      );
+      case "counter":
+        return (
+          <CounterWidget
+            label={config.label}
+            initialValue={Number(config.initialValue)}
+          />
+        );
 
-    case "page-view":
-      return (
-        <PageViewWidget
-          label={config.label}
-          maxViews={Number(config.maxViews) || 0}
-        />
-      );
+      case "page-view":
+        return (
+          <PageViewWidget
+            label={config.label}
+            maxViews={Number(config.maxViews) || 0}
+          />
+        );
 
-    case "word-clock":
-      return <WordClockWidget />;
+      case "word-clock":
+        return <WordClockWidget />;
 
-    case "year-month-week-day-progress":
-      return (
-        <LifeProgressWidget
-          title={config.title}
-          birthDate={config.birthDate}
-          timezone={config.timezone}
-          showLife={config.showLife !== "false"}
-          showYear={config.showYear !== "false"}
-          showMonth={config.showMonth !== "false"}
-          showWeek={config.showWeek !== "false"}
-          showDay={config.showDay !== "false"}
-        />
-      );
+      case "year-month-week-day-progress":
+        return (
+          <LifeProgressWidget
+            title={config.title}
+            birthDate={config.birthDate}
+            timezone={config.timezone}
+            showLife={config.showLife !== "false"}
+            showYear={config.showYear !== "false"}
+            showMonth={config.showMonth !== "false"}
+            showWeek={config.showWeek !== "false"}
+            showDay={config.showDay !== "false"}
+          />
+        );
 
-    case "simple-count-down":
-      return <CountdownTimerWidget targetDate={config.targetDate} />;
+      case "simple-count-down":
+        return <CountdownTimerWidget targetDate={config.targetDate} />;
 
-    case "world-clock":
-      return <WorldClockWidget timezone={config.timezone} />;
+      case "world-clock":
+        return <WorldClockWidget timezone={config.timezone} />;
 
-    // BUTTONS
-    case "button":
-      return (
-        <ButtonWidget
-          label={config.label}
-          url={config.url}
-          color={config.color}
-        />
-      );
+      // BUTTONS
+      case "button":
+        return (
+          <ButtonWidget
+            label={config.label}
+            url={config.url}
+            color={config.color}
+          />
+        );
 
-    case "upvote-button":
-      return <UpvoteButtonWidget />;
+      case "upvote-button":
+        return <UpvoteButtonWidget />;
 
-    case "like-button":
-      return <LikeButtonWidget />;
+      case "like-button":
+        return <LikeButtonWidget />;
 
-    // PRODUCTIVITY
-    case "todo":
-      return <TodoListWidget />;
+      // PRODUCTIVITY
+      case "todo":
+        return <TodoListWidget />;
 
-    case "inspirational-quotes":
-      return <InspirationalQuotesWidget />;
+      case "inspirational-quotes":
+        return <InspirationalQuotesWidget />;
 
-    // BUSINESS
-    case "project-progress-biz":
-      return (
-        <ProjectProgressBizWidget
-          projectName={config.projectName}
-          progress={Number(config.progress)}
-          color={config.color}
-        />
-      );
+      // BUSINESS
+      case "project-progress-biz":
+        return (
+          <ProjectProgressBizWidget
+            projectName={config.projectName}
+            progress={Number(config.progress)}
+            color={config.color}
+          />
+        );
 
-    default:
-      return (
-        <div style={{ padding: "20px", fontFamily: "system-ui", textAlign: "center" }}>
-          <p style={{ color: "#6b7280" }}>Widget type not yet implemented</p>
-        </div>
-      );
-  }
+      // PRO WIDGETS (now implemented)
+      case "kpi":
+        return (
+          <KPIWidgetWidget
+            metricName={config.metricName}
+            value={config.value}
+            change={Number(config.change)}
+          />
+        );
+
+      case "paypal-button":
+        return (
+          <PayPalButtonWidget
+            paypalEmail={config.paypalEmail}
+            amount={Number(config.amount)}
+            itemName={config.itemName}
+          />
+        );
+
+      case "weather":
+        return (
+          <WeatherForecastWidget
+            location={config.location}
+            units={config.units}
+          />
+        );
+
+      case "weather-round":
+        return <WeatherRoundWidget location={config.location} />;
+
+      case "weather-square":
+        return <WeatherSquareWidget location={config.location} />;
+
+      case "time-tracker":
+        return <TimeTrackerWidget />;
+
+      case "google-calendar":
+        return <CalendarWidget />;
+
+      default:
+        return (
+          <div style={{ padding: "20px", fontFamily: "system-ui", textAlign: "center" }}>
+            <p style={{ color: "#6b7280" }}>Widget type not yet implemented</p>
+          </div>
+        );
+    }
+  };
+
+  return (
+    <Suspense fallback={<WidgetLoading />}>
+      {renderWidget()}
+    </Suspense>
+  );
 }

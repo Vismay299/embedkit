@@ -311,14 +311,18 @@ export const widgets: WidgetDefinition[] = [
   {
     id: "project-progress-biz",
     name: "Project Progress",
-    slug: "project-progress",
+    slug: "project-progress-biz",
     description: "Track and visualize progress across multiple projects with beautiful progress bars embedded directly in your Notion workspace",
     category: "business",
-    icon: "BarChart3",
+    icon: "Briefcase",
     previewUrl: "/widgets/project-progress.svg",
     isNew: true,
     requiredPlan: "free",
-    configSchema: [],
+    configSchema: [
+      { key: "projectName", label: "Project Name", type: "text", default: "Q2 Revenue Growth" },
+      { key: "progress", label: "Progress (%)", type: "number", default: 45 },
+      { key: "color", label: "Bar Color", type: "color", default: "#2563eb" },
+    ],
   },
 ];
 
@@ -330,6 +334,16 @@ export function getWidgetsByCategory(category: string): WidgetDefinition[] {
   return category === "all" ? widgets : widgets.filter((w) => w.category === category);
 }
 
+// Category icon mapping (matching WidgetCard)
+const categoryIcons: Record<string, string> = {
+  LayoutGrid: "🔲",
+  BarChart3: "📊",
+  MousePointerClick: "🖱️",
+  CloudSun: "⛅",
+  Zap: "⚡",
+  Briefcase: "💼",
+};
+
 export const widgetCategories = [
   { id: "all", name: "All", icon: "LayoutGrid" },
   { id: "counters", name: "Counters", icon: "BarChart3" },
@@ -338,3 +352,7 @@ export const widgetCategories = [
   { id: "productivity", name: "Productivity", icon: "Zap" },
   { id: "business", name: "Business", icon: "Briefcase" },
 ] as const;
+
+export function getCategoryIcon(iconName: string): string {
+  return categoryIcons[iconName] || "🔲";
+}

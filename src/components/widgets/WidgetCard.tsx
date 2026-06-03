@@ -1,8 +1,9 @@
 import Link from "next/link";
+import Image from "next/image";
 import { WidgetDefinition } from "@/types";
 import { cn } from "@/lib/utils";
 
-// Simple inline SVG icons for widget previews
+// Fallback icons if SVG doesn't load
 const widgetIcons: Record<string, string> = {
   BarChart3: "📊",
   Gauge: "📈",
@@ -45,24 +46,34 @@ export function WidgetCard({ widget }: WidgetCardProps) {
         isComingSoon && "opacity-70 pointer-events-none"
       )}
     >
-      {/* Preview area */}
-      <div className="relative bg-gray-50 rounded-lg h-32 mb-4 flex items-center justify-center overflow-hidden">
-        <span className="text-5xl">{widgetIcons[widget.icon] || "🔲"}</span>
-        {widget.isNew && (
+      {/* Preview area with SVG */}
+      <div className="relative bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg h-32 mb-4 flex items-center justify-center overflow-hidden">
+        {widget.previewUrl ? (
+          <Image
+            src={widget.previewUrl}
+            alt={widget.name}
+            width={120}
+            height={80}
+            className="object-contain transition-transform group-hover:scale-110"
+          />
+        ) : (
+          <span className="text-5xl">{widgetIcons[widget.icon] || "🔲"}</span>
+        )}
+        {widget.isNew && !isComingSoon && (
           <span className="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded-full">
             NEW
           </span>
         )}
         {isComingSoon && (
-          <div className="absolute inset-0 bg-gray-200/50 flex items-center justify-center">
-            <span className="text-sm font-semibold text-gray-500 bg-white px-3 py-1 rounded-full">
+          <div className="absolute inset-0 bg-gray-200/70 flex items-center justify-center backdrop-blur-sm">
+            <span className="text-sm font-semibold text-gray-700 bg-white px-3 py-1 rounded-full shadow-sm">
               COMING SOON
             </span>
           </div>
         )}
         {isPartner && (
           <span className="absolute bottom-2 left-2 bg-[#0D9488]/10 text-[#0D9488] text-xs font-medium px-2 py-0.5 rounded">
-            PARTNER WIDGET
+            PARTNER
           </span>
         )}
       </div>
